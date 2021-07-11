@@ -2,6 +2,8 @@
 import type { InferGetStaticPropsType } from 'next'
 
 import getAllProducts from '@framework/product/get-all-products'
+import { ProductCard } from '@components/product'
+
 import { getConfig } from '@framework/api/config'
 import { Layout } from '@components/common'
 
@@ -26,7 +28,12 @@ export default function Home({
 
   return (
     <div>
-      { JSON.stringify(products) }
+      {products.slice(0, 3).map(product =>
+        <ProductCard
+          key={product.id}
+          product={product}
+        />
+      )}
     </div>
   )
 }
