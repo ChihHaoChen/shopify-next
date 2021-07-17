@@ -2,7 +2,7 @@
 import type { InferGetStaticPropsType } from 'next'
 
 import getAllProducts from '@framework/product/get-all-products'
-import { Grid } from '@components/ui'
+import { Grid, Hero, Marquee } from '@components/ui'
 import { ProductCard } from '@components/product'
 
 import { getConfig } from '@framework/api/config'
@@ -38,6 +38,41 @@ export default function Home({
         />)
       }
       </Grid>
+      <Hero
+        headline='Hi there'
+        description='Hello'
+      />
+      <Marquee>
+      {
+        products.slice(0, 3).map(product =>
+          <ProductCard
+            key={product.id}
+            variant='slim'
+            product={product}
+          />
+        )
+      }
+      </Marquee>
+      <Grid layout='B'>
+      {
+        products.slice(0, 3).map(product =>
+        <ProductCard
+          key={product.id}
+          product={product}
+        />)
+      }
+      </Grid>
+      <Marquee variant='secondary'>
+      {
+        products.slice(0, 3).map(product =>
+          <ProductCard
+            key={product.id}
+            variant='slim'
+            product={product}
+          />
+        )
+      }
+      </Marquee>
     </>
   )
 }
