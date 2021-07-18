@@ -1,7 +1,7 @@
 
 import type { InferGetStaticPropsType } from 'next'
 
-import getAllProducts from '@framework/product/get-all-products'
+import { getAllProducts } from '@framework/product'
 import { Grid, Hero, Marquee } from '@components/ui'
 import { ProductCard } from '@components/product'
 
