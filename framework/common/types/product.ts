@@ -13,6 +13,26 @@ export interface ProductPrice {
 }
 
 
+export interface ProductOptionValues {
+  label: string
+  hexColor?: string
+}
+
+
+export interface ProductOption {
+  id: string
+  displayName: string
+  values: ProductOptionValues[]
+}
+
+
+export interface ProductVariant {
+  id: string
+  name: string
+  options: ProductOption[]
+}
+
+
 export interface Product {
   id: string
   name: string
@@ -20,5 +40,7 @@ export interface Product {
   slug: string
   path: string
   images: ProductImage[]
-  price: ProductPrice
+  price: ProductPrice,
+  options: ProductOption[],
+  variants: ProductVariant[],
 }
