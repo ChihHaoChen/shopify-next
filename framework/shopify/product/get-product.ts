@@ -2,10 +2,16 @@ import { ApiConfig, Variables } from "@common/types/api";
 import { getProductQuery, normalizeProduct } from '@framework/utils';
 
 import { Product as ShoopifyProduct } from '@framework/schema';
+import { Product } from "@common/types/product";
 
 
 type FetchType = {
   productByHandle: ShoopifyProduct
+}
+
+
+type ReturnType = {
+  product: Product | null
 }
 
 
