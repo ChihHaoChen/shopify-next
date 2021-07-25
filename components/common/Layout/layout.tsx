@@ -5,6 +5,8 @@ import { Navbar } from '@components/common'
 import { Sidebar } from '@components/ui'
 import { CartSidebar } from '@components/cart'
 import { useUI } from '@components/ui/context'
+import { ApiProvider } from '@framework'
+
 import style from './Layout.module.css'
 
 
@@ -13,19 +15,21 @@ const Layout: FC = ({ children }) => {
   const { isSidebarOpen, closeSidebar } = useUI()
 
   return (
-    <div className={style.root}>
-      <Navbar />
-      <Sidebar
-        onClose={closeSidebar}
-        isOpen={isSidebarOpen}
-      >
-        <CartSidebar />
-      </Sidebar>
-      <main className="fit">
-        { children }
-      </main>
-      <Footer />
-    </div>
+    <ApiProvider>
+      <div className={style.root}>
+        <Navbar />
+        <Sidebar
+          onClose={closeSidebar}
+          isOpen={isSidebarOpen}
+        >
+          <CartSidebar />
+        </Sidebar>
+        <main className="fit">
+          { children }
+        </main>
+        <Footer />
+      </div>
+    </ApiProvider>
   )
 }
 
