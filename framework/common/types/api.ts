@@ -1,3 +1,6 @@
+import { ApiHooks } from "./hooks"
+
+
 export type ApiFetcherOptions = {
   query: string
   variables?: Variables
@@ -19,13 +22,6 @@ export type ApiFetcher<T = any> = (
 
 export interface ApiConfig {
   fetch<T>(options: ApiFetcherOptions): Promise<ApiFetcherResults<T>>
-}
-
-
-export interface ApiHooks {
-  cart: {
-    useAddItem: any
-  }
 }
 
 
