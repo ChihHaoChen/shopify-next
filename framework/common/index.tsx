@@ -21,9 +21,10 @@ export const ApiProvider = ({
 const coreConfig = useMemo(() => {
   return {
     fetcher: config.fetch,
-    hooks
+    hooks,
+    checkoutId: config.checkoutCookie
   }
-}, [config.fetch, hooks])
+}, [config.fetch, hooks, config.checkoutCookie])
 
   return (
     <ApiContext.Provider value={coreConfig}>
