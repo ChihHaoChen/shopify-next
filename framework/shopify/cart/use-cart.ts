@@ -1,6 +1,6 @@
 
 import useCart from '@common/cart/use-cart'
-import { createCheckout, getCheckoutQuery } from '@framework/utils'
+import { checkoutToCart, createCheckout, getCheckoutQuery } from '@framework/utils'
 import { useMemo } from 'react'
 
 export default useCart
@@ -17,7 +17,9 @@ export const handler = {
   }: any) {
     let checkout
 
-    if (checkoutId) {
+    console.log('inside handler in use-cart with checkoutId => ', checkoutId)
+    if (!(Object.entries(checkoutId).length === 0)) {
+      console.log('with CheckoutId =>', checkoutId)
       const { data } = await fetch({
         ...options,
         variables: {
@@ -26,11 +28,14 @@ export const handler = {
       })
       checkout = data.node
     } else {
+      console.log('without CheckoutId')
       checkout = await createCheckout(fetch)
     }
 
+    const cart = checkoutToCart(checkout)
+
     // Normalize checkout !
-    return checkout
+    return cart
   },
   useHook: ({useData}: any) => {
     const data = useData({

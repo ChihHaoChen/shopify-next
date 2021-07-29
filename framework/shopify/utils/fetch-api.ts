@@ -3,6 +3,7 @@ import { API_URL } from '@framework/const'
 
 
 const fetchApi = async <T>({ query, variables }: ApiFetcherOptions): Promise<ApiFetcherResults<T>> => {
+  console.log('fetchApi')
   const res = await fetch(API_URL!, {
     method: 'POST',
     headers: {
@@ -13,9 +14,9 @@ const fetchApi = async <T>({ query, variables }: ApiFetcherOptions): Promise<Api
       variables
     })
   })
-
+  console.log('After fetchApi')
   const { data, errors } = await res.json()
-
+  console.log('errors =>', errors)
   if (errors) {
     throw new Error(errors[0].message ?? errors.message)
   }

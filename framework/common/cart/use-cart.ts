@@ -9,7 +9,13 @@ const useCart = () => {
   const { checkoutCookie } = useApiProvider()
   
   const fetcherWrapper: typeof hook.fetcher = (context) => {
+    console.log('inside fetchWrapper with checkoutCookie =>', checkoutCookie)
+    console.log('Cookies.get =>', Cookies.get(checkoutCookie))
+    
+    
     context.input.checkoutId = Cookies.get(checkoutCookie)
+    
+    console.log('checkoutId from context =>', context)
     return hook.fetcher(context)
   }
 

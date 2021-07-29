@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Bag as Cart, Heart } from "@components/icons"
 import { useUI } from '@components/ui/context'
 import style from './Usernav.module.css'
-import useCart from "@framework/cart/use-cart"
+import useCart from "@common/cart/use-cart"
 
 
 const Usernav: FC = () => {
