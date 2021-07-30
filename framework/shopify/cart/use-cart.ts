@@ -1,12 +1,27 @@
 
-import useCart from '@common/cart/use-cart'
+import useCart, { UseCart } from '@common/cart/use-cart'
+import { Cart } from '@common/types/cart'
+import { SWRHook } from '@common/types/hooks'
+import { Checkout } from '@framework/schema'
 import { checkoutToCart, createCheckout, getCheckoutQuery } from '@framework/utils'
 import { useMemo } from 'react'
 
-export default useCart
 
-export const handler = {
-  fetchOptions: {
+export type UseCartHookDescriptor = {
+  fetcherInput: {
+    checkoutId: string
+  }
+  fetcherOutput: {
+    node: Checkout
+  }
+  data: Cart
+}
+
+
+export default useCart as UseCart<typeof handler>
+
+export const handler: SWRHook<UseCartHookDescriptor> = {
+  fetcherOptions: {
     // get checkout query
     query: getCheckoutQuery
   },
@@ -14,8 +29,8 @@ export const handler = {
     fetch,
     options,
     input: { checkoutId }
-  }: any) {
-    let checkout
+  }) {
+    let checkout: Checkout
 
     console.log('inside handler in use-cart with checkoutId => ', checkoutId)
     if (!(Object.entries(checkoutId).length === 0)) {
@@ -29,7 +44,7 @@ export const handler = {
       checkout = data.node
     } else {
       console.log('without CheckoutId')
-      checkout = await createCheckout(fetch)
+      checkout = await createCheckout(fetch as any)
     }
 
     const cart = checkoutToCart(checkout)
@@ -37,7 +52,7 @@ export const handler = {
     // Normalize checkout !
     return cart
   },
-  useHook: ({useData}: any) => {
+  useHook: ({useData}) => () => {
     const data = useData({
       swrOptions: {
         revalidateOnFocus: false
