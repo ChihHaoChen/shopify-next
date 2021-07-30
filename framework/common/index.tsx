@@ -22,7 +22,7 @@ const coreConfig = useMemo(() => {
   return {
     fetcher: config.fetch,
     hooks,
-    checkoutId: config.checkoutCookie
+    checkoutCookie: config.checkoutCookie
   }
 }, [config.fetch, hooks, config.checkoutCookie])
 

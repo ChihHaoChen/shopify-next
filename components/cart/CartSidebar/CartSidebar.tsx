@@ -3,12 +3,14 @@ import { Bag, Cross } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import cn from "classnames"
 import useCart from '@framework/cart/use-cart'
+import { LineItem } from '@common/types/cart'
 
 
 const CartSidebar: FC = () => {
-  const isEmpty = true
   const { closeSidebar } = useUI()
   const { data } = useCart()
+
+  const isEmpty = (data?.lineItems.length ?? 0) <= 0
 
   console.log('Data =>', data)
 
@@ -52,7 +54,13 @@ const CartSidebar: FC = () => {
             My Cart
           </h2>
           <ul className="py-6 space-y-6 border-t sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-accents-3">
-            Cart Items Here!
+            {
+              data?.lineItems.map((item: LineItem) =>
+              <div key={item.id}>
+                {item.name} - {item.quantity}
+              </div>
+              )
+            }
           </ul>
         </div>
         <div className="flex-shrink-0 px-4 py-5 sm:px-6">
@@ -60,7 +68,7 @@ const CartSidebar: FC = () => {
             <ul className="py-3">
             <li className="flex justify-between py-1">
                 <span>Subtotal</span>
-                <span>20$</span>
+                  <span>{data?.lineItemsSubtotalPrice}{data?.currency.code}</span>
               </li>
               <li className="flex justify-between py-1">
                 <span>Taxes</span>
@@ -73,7 +81,7 @@ const CartSidebar: FC = () => {
             </ul>
             <div className="flex justify-between py-3 mb-10 font-bold border-t border-accents-3">
               <span>Total</span>
-              <span>120$</span>
+                <span>{data?.totalPrice}{data?.currency.code}</span>
             </div>
           </div>
           <button
