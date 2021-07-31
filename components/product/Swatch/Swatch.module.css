@@ -1,18 +1,22 @@
 .root {
-  @apply inline-flex items-center justify-center px-10 py-4 font-semibold leading-6 text-center uppercase transition duration-150 ease-in-out border border-transparent rounded-sm shadow-sm cursor-pointer bg-secondary text-accents-1;
-  @apply box-border inline-flex items-center justify-center w-12 h-12 p-0 mr-3 transition duration-150 ease-in-out border border-gray-200 rounded-full shadow-none cursor-pointer bg-primary text-primary;
+  @apply items-center px-10 py-4 font-semibold leading-6 uppercase cursor-pointer bg-secondary text-accents-1;
+  @apply box-border inline-flex items-center justify-center w-12 h-12 p-0 mr-3 transition duration-150 ease-in-out border border-gray-200 rounded-full shadow-none bg-primary text-primary;
 
   & > span {
     @apply absolute;
   }
 
   &:hover {
-    @apply transform scale-110 border text-primary border-secondary; 
+    @apply transform scale-110 border text-primary border-secondary;
   }
 
   &:focus {
     @apply outline-none;
   }
+}
+
+.sm {
+  @apply h-7;
 }
 
 .color {

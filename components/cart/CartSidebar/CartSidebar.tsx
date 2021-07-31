@@ -1,18 +1,14 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Bag, Cross } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import cn from "classnames"
 import useCart from '@framework/cart/use-cart'
 import { LineItem } from '@common/types/cart'
-
+import CartItem from '@components/cart/CartItem'
 
 const CartSidebar: FC = () => {
   const { closeSidebar } = useUI()
-  const { data } = useCart()
-
-  const isEmpty = (data?.lineItems.length ?? 0) <= 0
-
-  console.log('Data =>', data)
+  const { data, isEmpty } = useCart()
 
   const rootClass = cn(
     "h-full flex flex-col",
@@ -56,9 +52,11 @@ const CartSidebar: FC = () => {
           <ul className="py-6 space-y-6 border-t sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-accents-3">
             {
               data?.lineItems.map((item: LineItem) =>
-              <div key={item.id}>
-                {item.name} - {item.quantity}
-              </div>
+              <CartItem
+                key={item.id}
+                item={item}
+                currencyCode={data.currency.code}
+              />
               )
             }
           </ul>
