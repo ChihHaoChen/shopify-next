@@ -29,9 +29,9 @@ export default function Home({
 
   return (
     <>
-      <Grid layout='A'>
+      <Grid>
       {
-        products.slice(0, 3).map(product =>
+        products.slice(0, 10).map(product =>
         <ProductCard
           key={product.id}
           product={product}
@@ -44,7 +44,7 @@ export default function Home({
       />
       <Marquee>
       {
-        products.slice(0, 3).map(product =>
+        products.slice(0, 10).map(product =>
           <ProductCard
             key={product.id}
             variant='slim'
@@ -53,7 +53,7 @@ export default function Home({
         )
       }
       </Marquee>
-      <Grid layout='B'>
+      {/* <Grid layout='B'>
       {
         products.slice(0, 3).map(product =>
         <ProductCard
@@ -72,7 +72,7 @@ export default function Home({
           />
         )
       }
-      </Marquee>
+      </Marquee> */}
     </>
   )
 }

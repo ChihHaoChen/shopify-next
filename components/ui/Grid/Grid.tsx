@@ -8,20 +8,19 @@ interface Props {
 }
 
 const Grid: FC<ReactNode> = ({
-  children,
-  layout = 'A'
+  children
 }) => {
 
-  const rootClassName = cn(
-    style.root,
-    {
-      [style.layoutA]: layout === 'A',
-      [style.layoutB]: layout === 'B'
-    }
-  )
+  // const rootClassName = cn(
+  //   style.root,
+  //   {
+  //     [style.layoutA]: layout === 'A',
+  //     [style.layoutB]: layout === 'B'
+  //   }
+  // )
 
   return (
-    <div className={rootClassName}>
+    <div className={style.root}>
       {children}
     </div>
   )
