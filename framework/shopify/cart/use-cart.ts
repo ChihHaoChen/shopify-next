@@ -34,7 +34,7 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
   }) {
     let checkout: Checkout
 
-    console.log('inside handler in use-cart with checkoutId => ', checkoutId)
+    // console.log('inside handler in use-cart with checkoutId => ', checkoutId)
     if (checkoutId) {
       const { data } = await fetch({
         ...options,
@@ -44,7 +44,7 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
       })
       checkout = data.node
     } else {
-      console.log('without CheckoutId')
+      // console.log('without CheckoutId')
       checkout = await createCheckout(fetch as any)
     }
 

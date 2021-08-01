@@ -64,7 +64,7 @@ const CartItem = ({
         />
       </div>
       <div className="flex flex-col flex-1 text-base">
-        <Link href={`/`}>
+        <Link href={`/`} passHref>
           <span
             className="text-lg font-bold leading-6 cursor-pointer"
             onClick={() => {}}

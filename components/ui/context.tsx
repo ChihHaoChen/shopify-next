@@ -64,7 +64,7 @@ export const UIProvider: FC = ({ children }) => {
       openSidebar,
       closeSidebar
     }
-  }, [state.isSidebarOpen])
+  }, [state])
 
 
   return (

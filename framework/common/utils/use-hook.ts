@@ -8,7 +8,7 @@ import useSWR from 'swr'
 
 export const useHook = <H>(fn: (apiHooks: ApiHooks) => H) => {
   const { hooks } = useApiProvider()
-  console.log('back to useHook')
+  // console.log('back to useHook')
   return fn(hooks)
 }
 
@@ -18,7 +18,7 @@ export const useMutationHook = (hook: MutationHook) => {
 
   return hook.useHook({
     fetch: (input: any) => {
-      console.log('inside useMutationHook')
+      // console.log('inside useMutationHook')
       return hook.fetcher({
         input,
         fetch: fetcher,
@@ -33,7 +33,7 @@ const useData = (hook: any, fetcher: ApiFetcher, ctx: any) => {
 
   const hookFetcher = async (query: string) => {
     try {
-      console.log('here is fetcher')
+      // console.log('here is fetcher')
       return await hook.fetcher({
         fetch: fetcher,
         options: { query },
