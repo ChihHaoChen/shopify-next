@@ -39,7 +39,7 @@ const ProductView: FC<Props> = ({ product }) => {
       }
 
       setIsLoading(true)
-      const output = await addItem(item)
+      await addItem(item)
       setIsLoading(false)
       openSidebar()
     } catch {
