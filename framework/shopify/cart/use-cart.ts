@@ -24,7 +24,6 @@ export default useCart as UseCart<typeof handler>
 
 export const handler: SWRHook<UseCartHookDescriptor> = {
   fetcherOptions: {
-    // get checkout query
     query: getCheckoutQuery
   },
   async fetcher({

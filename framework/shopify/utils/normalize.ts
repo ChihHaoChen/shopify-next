@@ -7,11 +7,14 @@ import {
   Product as ShopifyProduct,
   ProductOption,
   ProductVariantConnection,
-  SelectedOption
+  SelectedOption,
+  Collection as ShopifyCollection,
+  Image
 } from "../schema"
 
-import { Product } from "@common/types/product"
-import { Cart, LineItem } from "@common/types/cart"
+import { Product } from '@common/types/product'
+import { Collection } from '@common/types/collection'
+import { Cart, LineItem } from '@common/types/cart'
 
 
 export const normalizeCart = (checkout: Checkout): Cart => {
@@ -79,6 +82,12 @@ const normalizeProductImages = ({edges}: {edges: Array<ImageEdge>}) =>
     url ?? '/product-image-placeholder.svg',
     ...rest }
   ))
+
+const normalizCollectionImage = (image: Image) => {
+  return {
+    url: image.originalSrc ? image.originalSrc : '/product-image-placeholder.svg'
+  }
+}
 
 const normalizeProductPrice = ({currencyCode, amount}: MoneyV2) => ({
   value: +amount,
@@ -170,4 +179,25 @@ export function normalizeProduct(productNode: ShopifyProduct): Product {
   }
 
   return product
+}
+
+
+export function normalizeCollection(collectionNode: ShopifyCollection): Collection {
+  const {
+    id,
+    title,
+    handle,
+    image,
+    ...rest
+  } = collectionNode
+  
+  const collection = {
+    id,
+    title,
+    path: `/${handle}`,
+    slug: handle.replace(/^\/+|\/+$/g, ""),
+    image: normalizCollectionImage(image!)
+  }
+
+  return collection
 }

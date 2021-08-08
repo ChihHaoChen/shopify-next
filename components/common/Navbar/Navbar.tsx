@@ -11,28 +11,28 @@ const Navbar: FC = () => {
         <div className="flex items-center flex-1">
           <Link href='/'>
             <a className={style.logo}>
-              NEXT_STORE
+              Hokkaido Jerry
             </a>
           </Link>
           <nav className="ml-6 space-x-6">
             <Link href='/'>
               <a className={style.link}>
-                All
+                所有商品
               </a>
             </Link>
             <Link href='/'>
               <a className={style.link}>
-                Clothese
+                北海道薰衣草季
               </a>
             </Link>
             <Link href='/'>
               <a className={style.link}>
-                Accessories
+                含郵福袋
               </a>
             </Link>
             <Link href='/'>
               <a className={style.link}>
-                Shoes
+                促銷商品
               </a>
             </Link>
           </nav>

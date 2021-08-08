@@ -3,12 +3,12 @@
   @apply grid grid-cols-1 gap-0;
 
   @screen lg {
-    @apply grid-cols-3 grid-rows-2;
+    @apply grid-cols-5 grid-rows-2;
   }
   
   & > * {
     @apply row-span-1 overflow-hidden;
-    max-height: 800px;
+    max-height: 600px;
 
     @screen lg {
       height: inherit;

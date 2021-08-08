@@ -5,10 +5,10 @@ import s from './ProductView.module.css'
 import { Container, Button } from '@components/ui'
 import Image from "next/image"
 import { Product } from '@common/types/product'
-import { ProductSlider, Swatch } from "@components/product"
+import { ProductSlider, Swatch } from '@components/product'
 import { getVariant } from '../helpers'
 import { useUI } from '@components/ui/context'
-import useAddItem from "@framework/cart/use-add-item"
+import useAddItem from '@framework/cart/use-add-item'
 
 interface Props {
   product: Product
