@@ -2,6 +2,7 @@
 import { FC } from 'react'
 import { Footer } from '@components/common'
 import { Navbar } from '@components/common'
+import { Header } from '@components/common'
 import { Sidebar } from '@components/ui'
 import { CartSidebar } from '@components/cart'
 import { useUI } from '@components/ui/context'
@@ -17,7 +18,7 @@ const Layout: FC = ({ children }) => {
   return (
     <ApiProvider>
       <div className={style.root}>
-        <Navbar />
+        <Header />
         <Sidebar
           onClose={closeSidebar}
           isOpen={isSidebarOpen}
