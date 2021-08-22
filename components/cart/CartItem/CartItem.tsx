@@ -2,7 +2,6 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import s from './CartItem.module.css'
 import { Trash, Plus, Minus } from '@components/icons'
 import { LineItem } from '@common/types/cart'
 import React, { ChangeEvent, useState } from 'react'
@@ -47,12 +46,8 @@ const CartItem = ({
   }
 
   return (
-    <li
-      className={cn('flex flex-row space-x-8 py-8', {
-        'opacity-75 pointer-events-none': false
-      })}
-    >
-      <div className="relative w-16 h-16 overflow-hidden cursor-pointer bg-violet">
+    <li>
+      <div>
         <Image
           onClick={() => {}}
           className={s.productImage}
@@ -63,16 +58,15 @@ const CartItem = ({
           unoptimized
         />
       </div>
-      <div className="flex flex-col flex-1 text-base">
+      <div>
         <Link href={`/`} passHref>
           <span
-            className="text-lg font-bold leading-6 cursor-pointer"
             onClick={() => {}}
           >
             {item.name}
           </span>
         </Link>
-        <div className='flex p-1'>
+        <div>
         {
           options && options.length > 0 &&
           (options.map((option) => {
@@ -92,7 +86,7 @@ const CartItem = ({
           }))
         }
         </div>
-        <div className="flex items-center mt-3">
+        <div >
           <button type="button">
             <Minus onClick={() => incrementQuantity(-1)}/>
           </button>
@@ -101,7 +95,6 @@ const CartItem = ({
               type="number"
               max={99}
               min={0}
-              className={s.quantity}
               value={quantity}
               onChange={handleQuantity}
             />
@@ -111,13 +104,12 @@ const CartItem = ({
           </button>
         </div>
       </div>
-      <div className="flex flex-col justify-between space-y-2 text-base">
+      <div>
         <span>{price} {currencyCode}</span>
         <button
           onClick={ () => {
             removeItem({ id: item.id })
           }}
-          className="flex justify-end outline-none"
         >
           <Trash />
         </button>

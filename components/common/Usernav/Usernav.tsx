@@ -18,17 +18,17 @@ const Usernav: FC = () => {
 
   return (
     <nav>
-      <ul className={style.list}>
-        <li className={style.item}>
+      <ul >
+        <li >
           <Cart onClick={openSidebar} />
           {
             itemsCount > 0 &&
-            <span className={style.bagCount}>
+            <span >
               { itemsCount }
             </span>
           }
         </li>
-        <li className={style.item}>
+        <li>
           <Link href="/wishlist">
             <a>
               <Heart />

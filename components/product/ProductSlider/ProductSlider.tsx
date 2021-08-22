@@ -1,7 +1,6 @@
 import { FC, Children, isValidElement, cloneElement, RefObject, useState } from "react"
 import { useKeenSlider } from 'keen-slider/react'
-import style from './ProductSlider.module.css'
-import cn from 'classnames'
+
 
 const ProductSlider: FC = ({ children }) => {
 
@@ -16,15 +15,13 @@ const ProductSlider: FC = ({ children }) => {
   })
 
   return (
-    <div className={style.root}>
-      <div ref={sliderRef as RefObject<HTMLDivElement>} className='h-full transition-opacity keen-slider'>
+    <div>
+      <div ref={sliderRef as RefObject<HTMLDivElement>}>
       <button
         onClick={slider?.prev}
-        className={cn(style.leftControl, style.control)}  
         />
       <button
         onClick={slider?.next}
-        className={cn(style.rightControl, style.control)}  
       />
       {
         Children.map(children, (child) => {
@@ -33,8 +30,7 @@ const ProductSlider: FC = ({ children }) => {
             return {
               ...child,
               props: {
-                ...child.props,
-                className: `${child.props.className ? `${child.props.className}` : ""} keen-slider__slide`
+                ...child.props
               }
             }
           }

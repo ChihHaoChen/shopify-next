@@ -1,7 +1,6 @@
 
 import cn from 'classnames'
 import { FC, useState } from 'react'
-import s from './ProductView.module.css'
 import { Container, Button } from '@components/ui'
 import Image from "next/image"
 import { Product } from '@common/types/product'
@@ -49,13 +48,13 @@ const ProductView: FC<Props> = ({ product }) => {
 
   return (
     <Container>
-      <div className={cn(s.root, 'fit', "mb-5")}>
-        <div className={cn(s.productDisplay, 'fit')}>
-          <div className={s.nameBox}>
-            <h1 className={s.name}>
+      <div>
+        <div>
+          <div>
+            <h1>
               {product.name}
             </h1>
-            <div className={s.price}>
+            <div>
               {product.price.value}
               {` `}
               {product.price.currencyCode}
@@ -63,9 +62,8 @@ const ProductView: FC<Props> = ({ product }) => {
           </div>
           <ProductSlider>
             { product.images.map(image =>
-              <div key={image.url} className={s.imageContainer}>
+              <div key={image.url}>
                 <Image
-                  className={s.img}
                   src={image.url}
                   alt={image.alt}
                   width={1050}
@@ -76,12 +74,12 @@ const ProductView: FC<Props> = ({ product }) => {
             )}
           </ProductSlider>
         </div>
-        <div className={s.sidebar}>
+        <div>
           <section>
             { product.options.map(option =>
-              <div key={option.id} className="pb-4">
-                <h2 className="font-medium uppercase">{option.displayName}</h2>
-                <div className="flex flex-row py-4">
+              <div key={option.id}>
+                <h2>{option.displayName}</h2>
+                <div>
                   { option.values.map(optValue => {
                     const activeChoice = choices[option.displayName.toLowerCase()]
                     return (
@@ -104,13 +102,12 @@ const ProductView: FC<Props> = ({ product }) => {
                 </div>
               </div>
             )}
-            <div className="w-full max-w-xl text-lg break-words pb-14">
+            <div>
               { product.description }
             </div>
           </section>
           <div>
             <Button
-              className={s.button}
               onClick={addToCart}
               isLoading={isLoading}
             >

@@ -10,18 +10,18 @@ interface Props {
 
 const Hero: FC<Props> = ({ headline, description }) => {
   return (
-    <div className="bg-black">
+    <div>
       <Container el={"div" as any}>
-        <div className={style.root}>
-          <h2 className={style.headline}>
+        <div>
+          <h2>
             {headline}
           </h2>
-          <div className="flex-1 max-w-4">
-            <p className={style.description}>
+          <div>
+            <p>
               {description}
             </p>
             <Link href="/">
-              <a className={style.link}>
+              <a>
                 Read it here
               </a>
             </Link>

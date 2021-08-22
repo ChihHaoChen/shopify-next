@@ -7,36 +7,36 @@ import style from './Navbar.module.css'
 const Navbar: FC = () => {
   return (
     <Container>
-      <div className={style.root}>
-        <div className="flex items-center flex-1">
+      <div>
+        <div>
           <Link href='/'>
-            <a className={style.logo}>
+            <a>
               Hokkaido Jerry
             </a>
           </Link>
-          <nav className="ml-6 space-x-6">
+          <nav>
             <Link href='/'>
-              <a className={style.link}>
+              <a>
                 所有商品
               </a>
             </Link>
             <Link href='/'>
-              <a className={style.link}>
+              <a>
                 北海道薰衣草季
               </a>
             </Link>
             <Link href='/'>
-              <a className={style.link}>
+              <a>
                 含郵福袋
               </a>
             </Link>
             <Link href='/'>
-              <a className={style.link}>
+              <a>
                 促銷商品
               </a>
             </Link>
           </nav>
-          <div className="flex justify-end flex-1 space-x-8">
+          <div>
             <Usernav />
           </div>
         </div>

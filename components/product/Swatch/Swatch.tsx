@@ -25,21 +25,9 @@ const Swatch: FC<Props> = ({
 
   label = label?.toLowerCase()
   variant = variant?.toLocaleLowerCase()
-
-  const rootClassName = cn(
-    style.root,
-    {
-      [style.active]: active,
-      [style.color]: color,
-      [style.size]: variant === 'size',
-      [style.dark]: color && isDark(color),
-      [style.sm]: size === 'sm'
-    }
-  )
-
+  
   return (
     <button
-      className={rootClassName}
       style={color ? { backgroundColor: color } : {}}
       {...rest}
     >

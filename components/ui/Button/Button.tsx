@@ -19,23 +19,15 @@ const Button: FC<Props> = ({
   ...rest
 }) => {
 
-  const rootClassName = cn(
-    style.root,
-    className,
-    {
-      [style.loading]: isLoading,
-    }
-  )
   
   return (
     <Component
       type="button"
-      className={rootClassName}
       {...rest}
     >
       {children}
       {isLoading &&
-        <i className="flex pl-2 m-0">
+        <i>
           <LoadingDots />
         </i>
       }

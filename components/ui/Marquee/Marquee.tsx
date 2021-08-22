@@ -11,19 +11,13 @@ interface Props {
 
 const Marquee: FC<Props> = ({ children, variant = 'primary' }) => {
   
-  const rootClassName = cn(
-    style.root,
-    {
-      [style.secondary]: variant === 'secondary'
-    }
-  )
 
   return (
-    <div className={rootClassName}>
+    <div>
       <Ticker offset={80}>
       {
         () => (
-            <div className={style.container}>
+            <div>
             {children}
           </div>
         )

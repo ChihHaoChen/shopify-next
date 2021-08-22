@@ -17,7 +17,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <ApiProvider>
-      <div className={style.root}>
+      <div>
         <Header />
         <Sidebar
           onClose={closeSidebar}
@@ -25,7 +25,7 @@ const Layout: FC = ({ children }) => {
         >
           <CartSidebar />
         </Sidebar>
-        <main className="fit">
+        <main>
           { children }
         </main>
         <Footer />
